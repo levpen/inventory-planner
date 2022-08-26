@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+}
