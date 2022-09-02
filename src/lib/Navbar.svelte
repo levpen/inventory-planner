@@ -40,3 +40,13 @@
 		justify-content: end;
 	}
 </style>
+<!-- <ul class="nav justify-content-end">
+	{#if $isLoggedIn}
+		<li class="nav-item">
+			<a class="nav-link" href="/">Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/" on:click|preventDefault={logOut}>Sign Out</a>
+		</li>
+	{/if}
+</ul> -->

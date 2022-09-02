@@ -1,3 +1,4 @@
+
 <script>
 	// @ts-nocheck
 
@@ -8,14 +9,6 @@
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/Navbar.svelte';
 	import { isLoggedIn } from './authStore';
-
-	// isLoggedIn.subscribe(async () => {
-	// 	console.log('subscribe', isLoggedIn);
-	// 	if (!isLoggedIn) {
-	// 		console.log('bad');
-	// 		await goto('/login');
-	// 	}
-	// });
 	onMount(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {

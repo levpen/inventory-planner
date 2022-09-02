@@ -37,7 +37,7 @@
 	}
 	loadData();
 	async function addElem(event) {
-		if (event.key !== 'Enter' || !PClink || !PCname || arr.find((e) => e.link === PClink)) return;
+		if (event.key !== 'Enter' || !PClink || !PCname) return;
 		let curPC = { left_px: 200, top_px: 200, link: PClink, name: PCname };
 		arr = [...arr, curPC];
 		await setDoc(doc(db, `rooms/${roomName}/PCs/${PCname}`), {
@@ -50,6 +50,9 @@
 		console.log('PC added', arr);
 	}
 	async function removeElem(pc) {
+		let cool = confirm('Are you sure?');
+		if(!cool)
+			return;
 		arr = arr.filter((e) => e.name !== pc.name);
 		await deleteDoc(doc(db, `rooms/${roomName}/PCs/${pc.name}`));
 		console.log('PC removed', arr);
@@ -87,9 +90,9 @@
 
 {#each arr as item}
 	<Draggable left={item.left_px} top={item.top_px} pc={item} on:positionChange={changePos}>
-		<a href={item.link}>Link</a>
-		<p>Name: {item.name}</p>
-		<button on:click={removeElem(item)}>Delete</button>
+		<a href={item.link}>{item.link}</a>
+		<p>{item.name}</p>
+		<button class="btn btn-primary" on:click={removeElem(item)}>Delete</button>
 	</Draggable>
 {/each}
 
